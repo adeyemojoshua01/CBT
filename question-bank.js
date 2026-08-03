@@ -984,6 +984,8 @@ Option: D: 2,2-Dimethylpentane
 Answer: A
 Explanation: Five carbon main chain possessing methyl groups on positions two and three.
 
+Subject:make up
+Topic:mouy
 Type: MCQ
 Q110: What is the systematic IUPAC name written for compound CH3-C(CH3)2-CH2-CH2-CH3?
 Option: A: 2,3-Dimethylpentane
