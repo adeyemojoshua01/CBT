@@ -3,7 +3,7 @@
 // ============================================
 const MY_QUESTION_BANK = `
 
-Subject: Probability I
+Subject: Probability
 Topic: Probability Space & Theorems
 Type: MCQ
 Q001: Define a sample space. What is the sample space for tossing a single fair coin?
