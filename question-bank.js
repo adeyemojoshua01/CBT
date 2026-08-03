@@ -1,5 +1,8 @@
 // ============================================================
-// QUESTION BANK - Probability I
+// QUESTION BANK IMPORT SCRIPT
+// ============================================================
+// This script runs after the main app is loaded and injects
+// the Probability I question bank into the application.
 // ============================================================
 
 (function forceLoadQuestionBank() {
@@ -215,54 +218,20 @@ Explanation: An event is defined as any subset of the sample space. For a six-si
             });
 
             // Add the new subject to the app's data
-            if (window.app && window.app.data && window.app.data.subjects) {
-                window.app.data.subjects[newSubject.id] = newSubject;
-                window.app.saveSubjects();
-                console.log(`✅ Force-imported ${newSubject.questions.length} questions into "${subjectName}"`);
-                
-                // Refresh the page to show the new questions
-                if (window.app.showLanding) {
-                    setTimeout(() => window.app.showLanding(), 200);
-                }
-            } else {
-                console.warn("⚠️ App not ready. Storing subject for later import...");
-                // Store for later import
-                if (!window._pendingSubjects) window._pendingSubjects = [];
-                window._pendingSubjects.push(newSubject);
+            app.data.subjects[newSubject.id] = newSubject;
+            app.saveSubjects();
+
+            console.log(`✅ Force-imported ${newSubject.questions.length} questions into "${subjectName}"`);
+            
+            // Refresh the page to show the new questions
+            if (app.showLanding) {
+                setTimeout(() => app.showLanding(), 200);
             }
         }
 
-        // Try to import immediately, or wait for app to be ready
-        if (window.app && window.app.data) {
-            importToApp();
-        } else {
-            // Wait for app to initialize
-            const checkApp = setInterval(() => {
-                if (window.app && window.app.data) {
-                    clearInterval(checkApp);
-                    importToApp();
-                }
-            }, 100);
-            
-            // Timeout after 5 seconds
-            setTimeout(() => {
-                clearInterval(checkApp);
-                if (window._pendingSubjects && window._pendingSubjects.length > 0) {
-                    console.warn("⚠️ App not ready after timeout. Stored subjects:", window._pendingSubjects.length);
-                }
-            }, 5000);
-        }
+        importToApp();
 
     } catch (e) {
         console.warn("Question bank import failed:", e.message);
     }
 })();
-
-// After importing, remove the default subject
-if (window.app && window.app.data && window.app.data.subjects) {
-    if (window.app.data.subjects['default_subject']) {
-        delete window.app.data.subjects['default_subject'];
-        window.app.saveSubjects();
-        console.log("🗑️ Removed default subject");
-    }
-}
