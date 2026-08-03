@@ -257,3 +257,12 @@ Explanation: An event is defined as any subset of the sample space. For a six-si
         console.warn("Question bank import failed:", e.message);
     }
 })();
+
+// After importing, remove the default subject
+if (window.app && window.app.data && window.app.data.subjects) {
+    if (window.app.data.subjects['default_subject']) {
+        delete window.app.data.subjects['default_subject'];
+        window.app.saveSubjects();
+        console.log("🗑️ Removed default subject");
+    }
+}
