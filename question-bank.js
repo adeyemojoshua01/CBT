@@ -3,7 +3,7 @@
 // ============================================
 const MY_QUESTION_BANK = `
 
-Subject: Probability
+Subject: Probability I
 Topic: Probability Space & Theorems
 Type: MCQ
 Q001: Define a sample space. What is the sample space for tossing a single fair coin?
@@ -41,6 +41,7 @@ Option: C: The total number of outcomes; Rolling a number greater than 4 is 2
 Option: D: The probability of an outcome; Rolling a number greater than 4 is \\( \\frac{1}{3} \\)
 Answer: A
 Explanation: An event is defined as any subset of the sample space. For a six-sided die, the sample space is {1, 2, 3, 4, 5, 6}. Rolling a number greater than 4 includes the outcomes {5, 6}, which is a valid subset.
+
 
 `;
 
