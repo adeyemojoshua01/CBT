@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formula Sheet</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">Fluid Mechanics · Module 1</a>
+    <button class="menu-btn" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+  </header>
+  <nav id="menu" class="menu hidden">
+    <a href="index.html">Home</a>
+    <a href="chapter1.html">Chapter 1</a>
+    <a href="chapter2.html">Chapter 2</a>
+    <a href="chapter3.html">Chapter 3</a>
+    <a href="chapter4.html">Chapter 4</a>
+    <a href="chapter5.html">Chapter 5</a>
+    <a href="formulas.html">Formula Sheet</a>
+    <a href="about.html">About</a>
+  </nav>
+  <main class="container">
+    <h1>Formula Sheet</h1>
+    <div class="formula-card">
+      <div class="formula">ρ = m / V</div>
+      <div class="formula-units">kg/m³ — density</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula">γ = ρg</div>
+      <div class="formula-units">N/m³ — specific weight, g ≈ 9.81 m/s²</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula">SG = ρ<sub>fluid</sub> / ρ<sub>water</sub></div>
+      <div class="formula-units">dimensionless — specific gravity</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula">v = V / m = 1 / ρ</div>
+      <div class="formula-units">m³/kg — specific volume</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula">ν = μ / ρ</div>
+      <div class="formula-units">m²/s — kinematic viscosity</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula">K = −V (dP / dV)</div>
+      <div class="formula-units">Pa — bulk modulus</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula">h = 2γ cosθ / (ρ g r)</div>
+      <div class="formula-units">m — capillary rise (extension, source to confirm)</div>
+    </div>
+  </main>
+  <footer class="footer"><p>Compiled from Module 1 lecture notes for educational use.</p></footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
