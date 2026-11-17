@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 1 — What Is a Fluid?</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">Fluid Mechanics · Module 1</a>
+    <button class="menu-btn" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+  </header>
+  <nav id="menu" class="menu hidden">
+    <a href="index.html">Home</a>
+    <a href="chapter1.html">Chapter 1 — What Is a Fluid?</a>
+    <a href="chapter2.html">Chapter 2 — Fundamental Properties</a>
+    <a href="chapter3.html">Chapter 3 — Hydrostatics</a>
+    <a href="chapter4.html">Chapter 4 — Forces in Static Fluids</a>
+    <a href="chapter5.html">Chapter 5 — Master Summary</a>
+    <a href="formulas.html">Formula Sheet</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <main class="container">
+    <h1>Chapter 1 — What Is a Fluid?</h1>
+    <p class="lead">A fluid cannot resist shear stress. Push it sideways, and it keeps flowing.</p>
+
+    <section class="section-card" id="shear">
+      <h2>Solid vs Fluid — Shear Stress</h2>
+      <p>Drag the slider to push sideways. Watch how the brick and the water respond differently.</p>
+      <div class="canvas-wrap">
+        <canvas id="shearCanvas" width="600" height="300"></canvas>
+        <p class="canvas-caption">Left: brick. Right: water. Push sideways to compare.</p>
+      </div>
+      <div class="control">
+        <label for="shearSlider">Push sideways: <span id="shearReadout" class="readout">0%</span></label>
+        <input type="range" id="shearSlider" min="0" max="100" value="0" />
+      </div>
+      <div class="formula-card">
+        <div class="formula">A fluid cannot resist shear stress</div>
+        <div class="formula-mean">It deforms continuously while sheared.</div>
+      </div>
+      <div class="keypoint">A fluid is not defined by being wet or liquid-like. Gases are fluids too.</div>
+    </section>
+
+    <section class="section-card" id="liquid-gas">
+      <h2>Liquids vs Gases</h2>
+      <p>Shrink the container. Does the volume change?</p>
+      <div class="canvas-wrap">
+        <canvas id="lgCanvas" width="600" height="300"></canvas>
+        <p class="canvas-caption">Left: water balloon. Right: air balloon.</p>
+      </div>
+      <div class="control">
+        <label for="containerSlider">Container volume: <span id="containerReadout" class="readout">100%</span></label>
+        <input type="range" id="containerSlider" min="40" max="100" value="100" />
+      </div>
+      <table class="compare-table">
+        <tr><th>Property</th><th>Liquid</th><th>Gas</th></tr>
+        <tr><td>Definite volume?</td><td>Yes</td><td>No</td></tr>
+        <tr><td>Definite shape?</td><td>No</td><td>No</td></tr>
+      </table>
+    </section>
+
+    <section class="section-card" id="branches">
+      <h2>The Branches of Fluid Mechanics</h2>
+      <p>Tap a branch to see its example.</p>
+      <div class="grid">
+        <button class="control-btn" onclick="showBranch('statics')">Fluid Statics</button>
+        <button class="control-btn" onclick="showBranch('dynamics')">Fluid Dynamics</button>
+        <button class="control-btn" onclick="showBranch('hydrostatics')">Hydrostatics</button>
+        <button class="control-btn" onclick="showBranch('aerostatics')">Aerostatics</button>
+        <button class="control-btn" onclick="showBranch('kinematics')">Kinematics</button>
+        <button class="control-btn" onclick="showBranch('kinetics')">Kinetics</button>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="branchCanvas" width="600" height="260"></canvas>
+        <p class="canvas-caption" id="branchCaption">Tap a branch above to see its example.</p>
+      </div>
+    </section>
+
+    <p><a href="chapter2.html" class="btn-primary">Next: Chapter 2 — Fundamental Properties</a></p>
+  </main>
+
+  <footer class="footer">
+    <p>Compiled from Module 1 lecture notes for educational use.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/module-a-shear.js"></script>
+  <script src="js/module-b-liquid-gas.js"></script>
+  <script src="js/module-c-branches.js"></script>
+</body>
+</html>
