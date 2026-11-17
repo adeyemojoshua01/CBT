@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 2 — Fundamental Properties</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">Fluid Mechanics · Module 1</a>
+    <button class="menu-btn" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+  </header>
+  <nav id="menu" class="menu hidden">
+    <a href="index.html">Home</a>
+    <a href="chapter1.html">Chapter 1 — What Is a Fluid?</a>
+    <a href="chapter2.html">Chapter 2 — Fundamental Properties</a>
+    <a href="chapter3.html">Chapter 3 — Hydrostatics</a>
+    <a href="chapter4.html">Chapter 4 — Forces in Static Fluids</a>
+    <a href="chapter5.html">Chapter 5 — Master Summary</a>
+    <a href="formulas.html">Formula Sheet</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <main class="container">
+    <h1>Chapter 2 — Fundamental Properties</h1>
+    <p class="lead">These properties control how every fluid behaves.</p>
+
+    <section class="section-card" id="continuum">
+      <h2>The Continuum Hypothesis</h2>
+      <p>Zoom from a beach to molecules. Engineers treat fluids as continuous — smooth and unbroken.</p>
+      <div class="canvas-wrap">
+        <canvas id="continuumCanvas" width="600" height="260"></canvas>
+        <p class="canvas-caption">Drag to zoom from everyday scale to molecular scale.</p>
+      </div>
+      <div class="control">
+        <label for="scaleSlider">Scale: <span id="scaleReadout" class="readout">Beach</span></label>
+        <input type="range" id="scaleSlider" min="0" max="100" value="0" />
+      </div>
+      <div class="keypoint">Continuum = treat the fluid as smooth and unbroken.</div>
+      <div class="caution">Fails at nanoscale and in extremely rarefied gases.</div>
+    </section>
+
+    <section class="section-card" id="density">
+      <h2>Density, ρ</h2>
+      <p>Choose a fluid and a volume. Watch the mass change.</p>
+      <div class="canvas-wrap">
+        <canvas id="densityCanvas" width="600" height="260"></canvas>
+        <p class="canvas-caption">1 m³ cube on a balance.</p>
+      </div>
+      <div class="control">
+        <label for="materialSelect">Material</label>
+        <select id="materialSelect">
+          <option value="1000">Water (1000 kg/m³)</option>
+          <option value="1.2">Air (1.2 kg/m³)</option>
+          <option value="13600">Mercury (13600 kg/m³)</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="volumeSlider">Volume: <span id="volumeReadout" class="readout">1 m³</span></label>
+        <input type="range" id="volumeSlider" min="1" max="3" step="0.1" value="1" />
+      </div>
+      <div class="formula-card">
+        <div class="formula">ρ = m / V</div>
+        <div class="formula-units">kg/m³</div>
+        <div class="formula-mean">Mass per unit volume.</div>
+      </div>
+      <div class="keypoint">Density tells you how much mass is packed into a volume.</div>
+    </section>
+
+    <section class="section-card" id="specific">
+      <h2>Specific Weight and Specific Gravity</h2>
+      <p>Specific weight is weight per volume. Specific gravity compares density to water.</p>
+      <div class="canvas-wrap">
+        <canvas id="specificCanvas" width="600" height="260"></canvas>
+        <p class="canvas-caption">Objects float or sink according to SG.</p>
+      </div>
+      <div class="control">
+        <label for="sgSelect">Object</label>
+        <select id="sgSelect">
+          <option value="13.6">Mercury (SG 13.6)</option>
+          <option value="0.8">Oil (SG 0.8)</option>
+          <option value="0.92">Ice (SG 0.92)</option>
+        </select>
+      </div>
+      <div class="formula-card">
+        <div class="formula">γ = ρg &nbsp;&nbsp; SG = ρ<sub>fluid</sub> / ρ<sub>water</sub></div>
+        <div class="formula-units">N/m³ &nbsp;|&nbsp; dimensionless</div>
+      </div>
+      <div class="keypoint">SG &lt; 1 floats. SG &gt; 1 sinks.</div>
+    </section>
+
+    <section class="section-card" id="specific-volume">
+      <h2>Specific Volume, v</h2>
+      <p>Volume per unit mass — the reciprocal of density.</p>
+      <div class="canvas-wrap">
+        <canvas id="svCanvas" width="600" height="220"></canvas>
+        <p class="canvas-caption">1 kg of water vs 1 kg of air, drawn to scale.</p>
+      </div>
+      <div class="formula-card">
+        <div class="formula">v = V / m = 1 / ρ</div>
+        <div class="formula-units">m³/kg</div>
+      </div>
+    </section>
+
+    <section class="section-card" id="viscosity">
+      <h2>Viscosity — The Inclined Race</h2>
+      <p>Water and honey race down ramps. Then change the honey's viscosity and race again.</p>
+      <div class="canvas-wrap">
+        <canvas id="viscosityCanvas" width="600" height="260"></canvas>
+        <p class="canvas-caption">Left: water. Right: honey.</p>
+      </div>
+      <div class="control">
+        <label for="viscositySlider">Honey viscosity: <span id="viscosityReadout" class="readout">5.0 Pa·s</span></label>
+        <input type="range" id="viscositySlider" min="0.1" max="10" step="0.1" value="5" />
+      </div>
+      <button class="control-btn" onclick="startRace()">Race</button>
+      <div class="formula-card">
+        <div class="formula">ν = μ / ρ</div>
+        <div class="formula-units">m²/s (kinematic)</div>
+        <div class="formula-mean">Dynamic viscosity μ in Pa·s; kinematic ν in m²/s.</div>
+      </div>
+      <div class="keypoint">Viscosity is resistance to flow.</div>
+    </section>
+
+    <section class="section-card" id="newtonian">
+      <h2>Newtonian vs Non-Newtonian</h2>
+      <p>Apply shear and watch the shear stress respond. Water is linear. Ketchup thins. Toothpaste has a yield stress.</p>
+      <div class="canvas-wrap">
+        <canvas id="newtonianCanvas" width="600" height="300"></canvas>
+        <p class="canvas-caption">Shear stress vs rate of deformation.</p>
+      </div>
+      <div class="control">
+        <label for="fluidSelect">Fluid</label>
+        <select id="fluidSelect">
+          <option value="water">Water (Newtonian)</option>
+          <option value="ketchup">Ketchup (shear-thinning)</option>
+          <option value="toothpaste">Toothpaste (yield stress)</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="shearRateSlider">Shear rate: <span id="shearRateReadout" class="readout">1.0</span></label>
+        <input type="range" id="shearRateSlider" min="0.1" max="5" step="0.1" value="1" />
+      </div>
+      <div class="caution">Do not assume every liquid is Newtonian.</div>
+    </section>
+
+    <section class="section-card" id="temperature">
+      <h2>Temperature and Viscosity</h2>
+      <p>Heat a liquid and it flows more easily. Heat a gas and it becomes more viscous. The effects are opposite.</p>
+      <div class="canvas-wrap">
+        <canvas id="temperatureCanvas" width="600" height="260"></canvas>
+        <p class="canvas-caption">Left: liquid layers. Right: gas particles.</p>
+      </div>
+      <div class="control">
+        <label for="tempSlider">Temperature: <span id="tempReadout" class="readout">20 °C</span></label>
+        <input type="range" id="tempSlider" min="0" max="100" value="20" />
+      </div>
+      <div class="keypoint">Temperature has opposite effects on liquid and gas viscosity.</div>
+    </section>
+
+    <section class="section-card" id="compressibility">
+      <h2>Compressibility and Bulk Modulus</h2>
+      <p>Compress air and water with the same pressure. Only the air changes volume visibly.</p>
+      <div class="canvas-wrap">
+        <canvas id="compressCanvas" width="600" height="260"></canvas>
+        <p class="canvas-caption">Left: air syringe. Right: water syringe.</p>
+      </div>
+      <div class="control">
+        <label for="pressureSlider">Applied pressure: <span id="pressureReadout" class="readout">1 atm</span></label>
+        <input type="range" id="pressureSlider" min="1" max="10" step="0.1" value="1" />
+      </div>
+      <div class="formula-card">
+        <div class="formula">K = −V (dP / dV)</div>
+        <div class="formula-units">Pa</div>
+        <div class="formula-mean">Large K = hard to compress (water, 2.2 GPa). Small K = easy (air).</div>
+      </div>
+      <div class="caution">Neglect compressibility for most liquid flows and low-speed gas flows below ~30% of the speed of sound.</div>
+    </section>
+
+    <p><a href="chapter3.html" class="btn-primary">Next: Chapter 3 — Hydrostatics</a></p>
+  </main>
+
+  <footer class="footer">
+    <p>Compiled from Module 1 lecture notes for educational use.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/module-d-continuum.js"></script>
+  <script src="js/module-e-density.js"></script>
+  <script src="js/module-f-specific.js"></script>
+  <script src="js/module-g-specific-volume.js"></script>
+  <script src="js/module-h-viscosity.js"></script>
+  <script src="js/module-i-newtonian.js"></script>
+  <script src="js/module-j-temperature.js"></script>
+  <script src="js/module-k-compressibility.js"></script>
+</body>
+</html>
